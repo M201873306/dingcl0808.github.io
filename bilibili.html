@@ -9,6 +9,31 @@
 </head>
 
 <body>
+    <script type="text/javascript">
+
+      function plusReady() {
+        //获取当前窗口  
+        var ws = plus.webview.currentWebview();
+        //监听当前侧滑窗口的右滑
+        ws.drag({
+          direction: 'right',
+          moveMode: 'followFinger'
+        }, {
+          view: plus.runtime.appid,
+          moveMode: 'silent'
+        }, function(e) {
+
+          if (e.type == 'end' && e.result) {
+            console.log('程序执行到这里已经返回到目标窗口了');
+          }
+        });
+      }
+      if (window.plus) {
+        plusReady();
+      } else {
+        document.addEventListener("plusready", plusReady, false);
+      }
+</script>
 <header>
     <img src="https://online-pic.51mo.com/preview/photo/00/01/50/68/P-1506852-D2B26720.jpg">
 </header>
